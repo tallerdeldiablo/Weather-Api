@@ -32,8 +32,7 @@ function getApi() {
         link1.textContent = data.main.feels_like ;
         link1.textContent = data.main.feels_like ;
        
-
-        
+//apend list  
         newuli.appendChild(name);
         newuli.appendChild(link);
         newuli.appendChild(link1);
