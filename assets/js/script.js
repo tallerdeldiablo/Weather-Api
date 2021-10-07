@@ -20,30 +20,34 @@ function getApi() {
     })
     .then(function (data) {
       console.log(data)
-    
-
-
+    //create elements
         var createTableRow = document.createElement('tr');
-        var tableData = document.createElement('ul');
+        var newuli = document.createElement('ul');
+        var name = document.createElement('li');
         var link = document.createElement('li');
         var link1 = document.createElement('li');
-        var name = document.createElement('li');
-    
-   
+        var link2 = document.createElement('li');       
+    //assign data
+      
         link1.textContent = data.main.feels_like ;
-        name.textContent = data.name;
-    
-        document.getElementById("wea").innerHTML =  data.main.temp +  "F";
-        document.getElementById("hum").innerHTML =  "Feels like" + data.main.humidity ;
+        link1.textContent = data.main.feels_like ;
+       
+
         
-        tableData.appendChild(link);
-        tableData.appendChild(link1);
-        tableData.appendChild(name);
+        newuli.appendChild(name);
+        newuli.appendChild(link);
+        newuli.appendChild(link1);
+        newuli.appendChild(link2);
+        
 
 
-        createTableRow.appendChild(tableData);
+        createTableRow.appendChild(newuli);
         tableBody.appendChild(createTableRow);
       
+
+        document.getElementById("wea").innerHTML += data.name +   "Temperature" + data.main.temp;
+        document.getElementById("hum").innerHTML =  "Feels like" + data.main.humidity ;
+
     });
 }
 
