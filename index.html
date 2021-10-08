@@ -11,7 +11,7 @@
 <body>
     
     <main class="flex-row justify-center align-center col-auto p-4 bg-light">
-        <section class="card card-rounded col-7 bg-white">
+        <section class="card card-rounded col-12 bg-white">
           <header class="card-header text-center">
             <h2 class="text-black">
                 Weather-Api
@@ -29,14 +29,38 @@
               search
             </button>
           </div>
-          <table class="card-body table mx-auto my-4">
-            <th>
-              <p class="my-4"> </p>
-              <p id="wea"> </p>
-              <p id="hum"> </p>
-            </th>
-            <tbody id="repo-table" class="mx-auto text-center"></tbody>
-          </table>
+         
+        </section>
+
+
+        <section id = cities>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <button id="ATL" type="button" class="btn btn-primary btn-lg btn-block">ATLANTA</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block">CHICAGO</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block">WASHINGTON</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block">MIAMI</button>
+              </div>
+              <div class="col-sm">
+                <table >
+
+                  <th>
+                    <h2 id="nameCity"> </h2>
+                    <p id="wea"> </p>
+                    <p id="hum"> </p>
+                  </th>
+                  <tbody id="repo-table" class="mx-auto text-center"></tbody>
+                </table>
+              </div>
+              <div class="col-sm">
+                
+        
+              </div>
+            </div>
+          </div>
+          
+
         </section>
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
