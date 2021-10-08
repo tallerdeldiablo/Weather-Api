@@ -10,13 +10,13 @@ var date = moment().format("MMMM Do, YYYY");
 
 document.getElementById("Tdate").innerHTML = date;
 
-function getApi() {
+function getApi(acity) {
   
-  const acity =  document.getElementById('inpuCity');
+ // const acity =  document.getElementById('inpuCity');
 
-  const theCity = acity.value.trim();
+  //const theCity = acity.value.trim();
 
-  var requestUrl = 'http://api.openweathermap.org/data/2.5/weather?q='+theCity+'&appid=d3cead6b24ef04751594f3f9dfdaba4a&units=imperial';
+  var requestUrl = 'http://api.openweathermap.org/data/2.5/weather?q='+acity+'&appid=d3cead6b24ef04751594f3f9dfdaba4a&units=imperial';
 
 
 
@@ -52,13 +52,45 @@ function getApi() {
       
         var temp = data.main.temp;
         var floorT = Math.floor(temp);
-
-        document.getElementById("wea").innerHTML = data.name +   "Temperature " + floorT;
+        
+      document.getElementById("nameCity").innerHTML = data.name;
+       document.getElementById("wea").innerHTML = data.name +   "<br >Temperature " + floorT;
         document.getElementById("hum").innerHTML =  "Humidity " + data.main.humidity ;
-
+        localStorage.setItem('getCity',acity);
     });
 }
 
-var btn = document.getElementById("myBtn");
 
-btn.addEventListener("click", getApi);
+var todo1 = document.getElementById("myBtn");
+todo1.addEventListener("click", function(event, cit) {
+
+  const acity =  document.getElementById('inpuCity');
+  const theCity = acity.value.trim();
+     getApi(theCity);
+
+ 
+  console.log(typeof(cit)) 
+  getApi(cit);
+});
+
+
+
+
+
+
+// get tcity from the buttons
+var todo = document.getElementById("cities");
+todo.addEventListener("click", function(event, cit) {
+  var element = event.target;
+ // alert(element+element.nodeName + todo);
+  cit = element.textContent;
+  console.log(typeof(cit)) 
+  getApi(cit);
+});
+
+
+
+// local storage
+
+var x = localStorage.getItem("getCity");
+console.log(x);
