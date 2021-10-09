@@ -6,7 +6,7 @@ var weaEl = document.getElementById('wea');
 const theKey = 'd3cead6b24ef04751594f3f9dfdaba4a';
 const theUrl = 'api.openweathermap.org/data/2.5/weather?id=';
 
-var date = moment().format("MMMM Do, YYYY"); 
+var date = moment().format("MMMM Do, YYYY, H a"); 
 
 document.getElementById("Tdate").innerHTML = date;
 
@@ -45,18 +45,22 @@ function getApi(acity) {
         newuli.appendChild(link1);
         newuli.appendChild(link2);
         */
-
-
-        createTableRow.appendChild(newuli);
-        tableBody.appendChild(createTableRow);
+  //      createTableRow.appendChild(newuli);
+    //    tableBody.appendChild(createTableRow);
       
         var temp = data.main.temp;
         var floorT = Math.floor(temp);
-        
-      document.getElementById("nameCity").innerHTML = data.name;
-       document.getElementById("wea").innerHTML = data.name +   "<br >Temperature " + floorT;
+  
+        document.getElementById("nameCity").innerHTML = "<br>" + data.name;
+    
+      document.getElementById("dat").innerHTML = date;
+    //document.getElementById("wea").innerHTML = "<br >Temperature " + floorT;
+     //  document.getElementById("wea").innerHTML = "<br >Wind Speed " + data.wind_speed;
         document.getElementById("hum").innerHTML =  "Humidity " + data.main.humidity ;
-        localStorage.setItem('getCity',acity);
+        localStorage.setItem('getCity', acity);
+        localStorage.setItem('date', date);
+        localStorage.setItem('wea', date);
+
     });
 }
 
@@ -93,4 +97,6 @@ todo.addEventListener("click", function(event, cit) {
 // local storage
 
 var x = localStorage.getItem("getCity");
+var x = localStorage.getItem("getCity");
+
 console.log(x);
