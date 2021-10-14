@@ -16,7 +16,7 @@ function getApi(acity) {
 
   //const theCity = acity.value.trim();
 
-  var requestUrl = 'http://api.openweathermap.org/data/2.5/weather?q='+acity+'&appid=d3cead6b24ef04751594f3f9dfdaba4a&units=imperial';
+  var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+acity+'&appid=d3cead6b24ef04751594f3f9dfdaba4a&units=imperial';
 
 
 
