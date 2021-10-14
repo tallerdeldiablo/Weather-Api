@@ -53,7 +53,7 @@ function getApi(acity) {
   
         document.getElementById("nameCity").innerHTML = "<br>" + data.name;
     
-      document.getElementById("dat").innerHTML = date;
+     // document.getElementById("dat").innerHTML = date;
     //document.getElementById("wea").innerHTML = "<br >Temperature " + floorT;
      //  document.getElementById("wea").innerHTML = "<br >Wind Speed " + data.wind_speed;
         document.getElementById("hum").innerHTML =  "Humidity " + data.main.humidity ;
