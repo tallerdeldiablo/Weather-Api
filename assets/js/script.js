@@ -33,6 +33,7 @@ var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+acity+'&ap
    
 let latit = data.coord.lat; //take latitud from the respone
 let longi = data.coord.lon;
+let iconURL =  data.weather[0].icon +"@2x.png";
 console.log( latit);
 console.log(longi);
 console.log(data);
@@ -66,28 +67,26 @@ fetch(requestUrlFive)
  newuli.appendChild(link2);
 
  */ document.getElementById("nameCity").innerHTML = data.name;
+ document.getElementById("iconWea").src="http://openweathermap.org/img/wn/"+ iconURL;
  document.getElementById("tomo").innerHTML = tomorro;
 console.log(elwe)
  document.getElementById("dayN").innerHTML = "Temp<br> " + Math.floor(data.main.temp)+"°";
- document.getElementById("wea").innerHTML = "feels like <br>" + data.main.feels_like;
- document.getElementById("hum").innerHTML += "humidity <br>" + elwe.daily[0].wind_speed;
- document.getElementById("hum").innerHTML += "windspeed<br> " + elwe.daily[0].humidity;
+  document.getElementById("windSpe").innerHTML = "wind <br>" + data.wind.sped;
+ document.getElementById("hum").innerHTML = "humidity<br> " + elwe.daily[0].humidity;
 
 
  document.getElementById("dayN2").innerHTML = "Temp <br>" +  Math.floor(elwe.daily[0].temp.day)+"°";
- document.getElementById("wea2").innerHTML = "feels like " + elwe.daily[0].feels_like.day;
- document.getElementById("hum2").innerHTML += "windspeed <br>" + elwe.daily[0].wind_speed;
- document.getElementById("hum2").innerHTML += "humidity <br>" + elwe.daily[0].humidity;
+ 
+ document.getElementById("windSpe2").innerHTML = "windspeed <br>" + elwe.daily[0].wind;
+ document.getElementById("hum2").innerHTML = "humidity <br>" + elwe.daily[0].humidity;
  
 
  
 
- document.getElementById("dayN3").innerHTML = "Temp " + elwe.daily[1].humidity;
- document.getElementById("wea3").innerHTML = "feels like " + elwe.daily[1].feels_like.day;
- document.getElementById("hum3").innerHTML += "windspeed " + elwe.daily[1].wind_speed;
- document.getElementById("hum3").innerHTML += "humidity " + elwe.daily[1].humidity;
- let one = `   <div class="col-sm">
-                
+ document.getElementById("dayN3").innerHTML = "Temp " + elwe.daily[1].temp.day+"°";
+  
+ document.getElementById("hum3").innerHTML = "humidity " + elwe.daily[1].humidity;
+ let one = `<div class="col-sm">          
  <p >DAY1</p>
  <p >WEATHER</p>
  <p > </p>
@@ -104,16 +103,13 @@ console.log(elwe)
     });
 }
 
-
+//event for city of the INPUT
 var todo1 = document.getElementById("myBtn");
 todo1.addEventListener("click", function(event, cit) {
 
   const acity =  document.getElementById('inpuCity');
   const theCity = acity.value.trim();
      getApi(theCity);
-
-
-  
   getApi(cit);
 });
 
@@ -122,14 +118,12 @@ todo1.addEventListener("click", function(event, cit) {
 var todo = document.getElementById("cities");
 todo.addEventListener("click", function(event, cit) {
   var element = event.target;
- // alert(element+element.nodeName + todo);
-  cit = element.textContent;
+   cit = element.textContent;
 
-  getApi(cit);
+  getApi(cit); //call the API send the city
 });
 
 // local storage
-
 var x = localStorage.getItem("getCity");
 
 
