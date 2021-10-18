@@ -24,84 +24,60 @@
           <h3  ></h2>
           <h4 id="Tdate" class="text-black">Today</h3>
         </header>
-        
-        <div class="text-center pt-4">
-          <input id="inpuCity" type="text" />
-          <button class="Btnc" id="myBtn">search</button>
-        </div>
+
+      
       </section>
       <div class="container">
 
           <div class="row">
             
-           <div id="cities">
+                <div id="cities2">
           
-                    <button
-                      id="ATL"
-                      type="button"
-                      class="btn btn-primary btn-lg btn-block"
-                    >
-                      ATLANTA
-                    </button>
-                    <button type="button" class="btn btn-primary btn-lg btn-block">
-                      CHICAGO
-                    </button>
-                    <button type="button" class="btn btn-primary btn-lg btn-block">
-                      WASHINGTON
-                    </button>
-                    <button type="button" class="btn btn-primary btn-lg btn-block">
-                      MIAMI
-                    </button>
-                  </div>
-          
-                    <div class="col-sm">
-                      <br />
-                      <p > Today </p>
-                      <p id="dayN">Temp</p>
-                      <p id="windSpe">WindSpeed</p>
-                      <p id="hum">HU</p>
+                  <div class="card">
+                    <form id="todo-form" method="POST">
+                      <label for="todo-text">City: </label>
+                      <input
+                        type="text"
+                        placeholder="Atlanta"
+                        name="todo-text"
+                        id="city-text"
+                      /><button class="Btnc" id="myBtn">search</button>
+                    </form>
+                    <p>Last Search</p>
+                    <ul id="todo-city"></ul>
+                    <ul id="cities"></ul>
+                        
+                  </div> </div>
+                      <div id = "fivedays"  class ="row  "> 
+                            <div class="col-sm">
+                              <br />
+                              <p > Today </p>
+                              <p id="dayN">Temp</p>
+                              <p id="windSpe">WindSpeed</p>
+                              <p id="hum">HU</p>
+                              
+                              
+                            </div>
                       
-                      
-                    </div>
-              
-                  <div class="col-sm">
-                    <br />
-                    <p id="tomo" > Tomorrow </p>
-                    <p id="dayN2">Temp</p>
-                    <p id="windSpe2">WindSpeed</p>
-                    <p id="hum2">Humidity</p>
+                            <div class="col-sm">
+                              <br />
+                              <p > Today </p>
+                              <p id="dayN1">Temp</p>
+                              <p id="windSpe1">WindSpeed</p>
+                              <p id="hum1">HU</p>
+                              
+                              
+                            </div>
+                     
                    
-                
-                  </div>
-                  <div class="col-sm">
-                  <br />
-                  <p > After Tomorrow </p>
-                  <p id="dayN3">Temp</p>
-                  <p id="windSpe3">WindSpeed</p>
-                  <p id="hum3">H</p>
-                  
-               
-                 </div>
-                 <div class="col-sm">
-                  <br />
-                  <p > After Tomorrow </p>
-                  <p id="">Temp</p>
-                  <p id="">WindSpeed</p>
-                  <p id="">H</p>
-                
-                  </div>
-                  <div class="col-sm">
-                    <br />
-                    <p > After Tomorrow </p>
-                    <p id="">Temp</p>
-                    <p id="">WindSpeed</p>
-                    <p id="">Humidity</p>
-                  
-                  </div>
+
+                 
+                      </div>
+             
+           </div>
   
-                </div>
-              </div>
-            </div>
+                
+        
       <script
         src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -122,7 +98,7 @@
         type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
       ></script>
-
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="./assets/js/script.js"></script>
     </main>
   </body>
