@@ -10,7 +10,7 @@ var obj = {
 }
 document.getElementById("Tdate").innerHTML = date;
 
-
+var todoFiveCities = document.querySelector("#fivedays");
 var cityInput = document.querySelector("#city-text");
 var todoForm = document.querySelector("#todo-form");
 var todoCity = document.querySelector("#cities");
@@ -27,9 +27,12 @@ function citiesfromLOCA() {
 
     var li = document.createElement("li");
     li.setAttribute("data-index", i);
+    
 
     var buttonC = document.createElement("button");
+   
     buttonC.textContent = citytoBtn;
+    
      li.appendChild(buttonC);
     todoCity.appendChild(li);
     }
@@ -57,7 +60,6 @@ todoForm.addEventListener("submit", function(event) {
   if (cityText === "") {
     return;
   }
- 
 
   citiesArray.push(cityText);
   cityInput.value = "";
@@ -65,43 +67,15 @@ todoForm.addEventListener("submit", function(event) {
     citiesArray.splice(0, 1);
   }
   
-
   // Store updated cities in localStorage, re-render the list
   storeCitiesLOCA();
   citiesfromLOCA();
 });
-/*
 
-todoCity.addEventListener("click", function(event) {
-  var element = event.target;
-
-  // Checks if element is a button
-  if (element.matches("button") === true) {
-    // Get its data-index value and remove the todo element from the list
-    var index = element.parentElement.getAttribute("data-index");
-    citiesArray.splice(index, 1);
-
-    // Store updated cities in localStorage, re-render the list
-    storeCitiesLOCA();
-    citiesfromLOCA();
-  }
-});
-*/
-
-// Calls init to retrieve data and render it to the page on load
 init()
 
 
-
 //----------------------------end buttonslocal
-
-
-
-
-
-
-
-
 
 function getApi(acity) {
  // const acity =  document.getElementById('inpuCity');
@@ -117,7 +91,6 @@ var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+acity+'&ap
   fetch(requestUrl)
     .then(function (response) {
       return response.json();
-
     })
     .then(function (data) {
    
@@ -140,71 +113,80 @@ fetch(requestUrlFive)
 })
 .then(function (elwe) {
   console.log(elwe.daily)
-  console.log(elwe.daily[1].uv)
+
 
 
  //create elements
- var createTableRow = document.createElement('tr');
- var newuli = document.createElement('ul');
+ //var createTableRow = document.createElement('tr');
+// var newuli = document.createElement('ul');
  var link1 = document.createElement('li');
 
  link1.textContent = elwe.name ;
+//  CREATE DAY BY DAY ------------------------------------------------------------
+ function createFiveDays() {
+
+  todoFiveCities.innerHTML = "";
+
+  for (var i = 0; i < citiesArray.length; i++) {
+    //var citytoBtn = citiesArray[i];
+
+    let buttonCit = document.createElement("p");
+    let ul = document.createElement("ul");
+    let uli = document.createElement("li");
+    let pTempe = document.createElement("li");
+    let pWind =  document.createElement("li");
+    let pUVI =  document.createElement("li");
+    buttonCit.textContent = "Day"+ i;
+
+   
+    ul.setAttribute("data-index", i);
+    uli.setAttribute("data-index", i);
+    pTempe.setAttribute("data-index", i);
+    pWind.setAttribute("data-index", i);
+    pUVI.setAttribute("data-index", i);
+
+   tContent = "Day"+ i;
+
+    uli.textContent = "Temp" +  elwe.daily[i].temp.day;
+    pWind.textContent = "Wind " +  elwe.daily[i].wind_speed;
+    pTempe.textContent = "humid " +  elwe.daily[i].humidity;
+    pUVI.textContent = "uvi " +  elwe.daily[i].uvi;
+    //pWind.textContent = "Temperature " +  elwe.daily[i].humidity;
+
+     //ul.appendChild(buttonCit);
+     ul.appendChild(uli);
+     ul.appendChild(pWind);
+     ul.appendChild(pTempe);
+     ul.appendChild(pUVI);
+     todoFiveCities.appendChild(ul);
+
+    }
+}
+createFiveDays();
 
 
-/*newuli.appendChild(name);
- newuli.appendChild(link);
- newuli.appendChild(link1);
- newuli.appendChild(link2);
- //document.getElementById("tomo").innerHTML = tomorro;
-
- */ document.getElementById("nameCity").innerHTML = data.name;
+document.getElementById("nameCity").innerHTML = data.name + "<br> Temperature " + data.main.temp + " humidity " + data.main.humidity + "<br> Wind speed" + data.wind.speed ;
  document.getElementById("iconWea").src="http://openweathermap.org/img/wn/"+ iconURL;
+ d
  
 console.log(elwe)
- document.getElementById("dayN").innerHTML = "Temp<br> " + Math.floor(data.main.temp)+"°";
+/*
+document.getElementById("dayN").innerHTML = "Temp<br> " + Math.floor(data.main.temp)+"°";
   document.getElementById("windSpe").innerHTML = "wind <br>" + data.wind.sped;
  document.getElementById("hum").innerHTML = "humidity<br> " + elwe.daily[0].humidity;
 
-/*
- document.getElementById("dayN2").innerHTML = "Temp <br>" +  Math.floor(elwe.daily[0].temp.day)+"°";
+ $("#fivedays").append(`  <div  class="col-sm"> <p id="">Temp</p> Dia JQuery<p id="">WindSpeed Full</p> <p>Humidity</p>" </div>`);
+ $("#fivedays").append(`  <div  class="col-sm"> <p id="">Temp</p> Dia JQuery<p id="">WindSpeed Full</p> <p>Humidity</p>" </div>`);
  
- document.getElementById("windSpe2").innerHTML = "windspeed <br>" + elwe.daily[0].wind;
- document.getElementById("hum2").innerHTML = "humidity <br>" + elwe.daily[0].humidity;
- 
-
- *//*
-let day1 = $("Day1 <div></div>")
-$("#fivedays").att("col-sm")
- $("#fivedays").slideToggle(1000);
- $("#fivedays").append(`      <div class="col-sm">
- <br />
- <p id="tomo" > ${tomorro} </p>
- <p id="dayN2">Temp</p>
- <p id="windSpe2">WindSpeed</p>
- <p id="hum2">Humidity</p>
-           
-</div>`);
 */
- $("#fivedays").append(`  <div  class="col-sm"> <p id="">Temp</p> Dia JQuery<p id="">WindSpeed Full</p> <p>Humidity</p>" </div>`);
- $("#fivedays").append(`  <div  class="col-sm"> <p id="">Temp</p> Dia JQuery<p id="">WindSpeed Full</p> <p>Humidity</p>" </div>`);
- 
 
-
-
-
- let one = `<div class="col-sm">          
- <p >DAY1</p>
- <p >WEATHER</p>
- <p > </p>
-</div>`
 
  localStorage.setItem('getCity', acity);
- localStorage.setItem('date', date);
- localStorage.setItem('wea', date);
+// localStorage.setItem('date', date);
+ //localStorage.setItem('wea', date);
 
 })
 
-   
 
     });
 }
