@@ -70,6 +70,7 @@ todoForm.addEventListener("submit", function(event) {
   // Store updated cities in localStorage, re-render the list
   storeCitiesLOCA();
   citiesfromLOCA();
+  getApi(cityText);
 });
 
 init()
@@ -166,7 +167,7 @@ createFiveDays();
 
 
 document.getElementById("nameCity").innerHTML = data.name + "<br> Temperature " + data.main.temp + " humidity " + data.main.humidity + "<br> Wind speed" + data.wind.speed ;
- document.getElementById("iconWea").src="http://openweathermap.org/img/wn/"+ iconURL;
+ document.getElementById("iconWea").src="https://openweathermap.org/img/wn/"+ iconURL;
  d
  
 console.log(elwe)
